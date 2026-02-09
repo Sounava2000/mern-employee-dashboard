@@ -1,0 +1,33 @@
+{
+  "name": "employee-management-server",
+  "version": "1.0.0",
+  "description": "Employee Management App Backend using MERN Stack",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "mern",
+    "employee",
+    "express",
+    "mongodb",
+    "rest-api"
+  ],
+  "author": "Sounava Mukherjee",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.9.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
