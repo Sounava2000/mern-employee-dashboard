@@ -40,4 +40,18 @@ This project demonstrates how to build a complete CRUD-based system with image u
 ---
 
 ## 📂 Project Structure
+## 🖼️ Application Screenshots
+
+### Employee List Page
+![Employee List](Screenshot/dashboard.PNG)
+
+---
+
+### Add / Edit Employee
+![Add / Edit Employee](Screenshot/add-user.PNG)
+
+---
+
+### Employee Details
+![Employee Details](Screenshot/user-details.PNG)
 
