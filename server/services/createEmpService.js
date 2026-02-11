@@ -44,6 +44,7 @@ export async function createEmpService(req, res, next) {
   fs.unlinkSync(file.path);
   return res.status(200).json({
     success: true,
+    newData:empCreate,
     message: "Successfully User Create",
   });
 }

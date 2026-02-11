@@ -35,6 +35,7 @@ export const EmpAll = () => {
       const data = await res.json();
 
       if (data.success) {
+        
         setEmpData({
           emps: data.emps,
           pagination: data.pagination,
@@ -61,7 +62,7 @@ export const EmpAll = () => {
       <h2>Employee Management App</h2>
 
       <div className="top-bar">
-        <Add></Add>
+        <Add setEmpData={setEmpData}></Add>
 
         <input
           type="text"

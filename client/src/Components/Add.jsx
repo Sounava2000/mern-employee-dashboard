@@ -3,9 +3,9 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
-export const Add = ({}) => {
+export const Add = ({ setEmpData }) => {
   const API_URL = import.meta.env.VITE_BACKEND_URL;
-  
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,7 +16,7 @@ export const Add = ({}) => {
   const [salary, setSalary] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-const [loader,setLoader] =useState(false)
+  const [loader, setLoader] = useState(false);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -26,9 +26,9 @@ const [loader,setLoader] =useState(false)
     }
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-setLoader(true)
+    setLoader(true);
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -36,37 +36,37 @@ setLoader(true)
     formData.append("department", department);
     formData.append("salary", salary);
     formData.append("file", image);
-for (let [key, value] of formData.entries()) {
-  console.log([key, value]);
-}
-   console.log(formData.entries())
+    for (let [key, value] of formData.entries()) {
+      console.log([key, value]);
+    }
+    console.log(formData.entries());
     try {
-    const res = await fetch(`${API_URL}/create`, {
-      method: "POST",
-      body: formData,
-      
-    });
+      const res = await fetch(`${API_URL}/create`, {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await res.json();
-    console.log(data);
-    if (data.success) {
-       setLoader(false)
-       toast.success(data.message)
+      const data = await res.json();
+      console.log(data);
+      if (data.success) {
+        setLoader(false);
+        toast.success(data.message);
+        setEmpData((prev) => {
+          const copyCode = { ...prev };
+          copyCode["emps"] = [data.newData, ...prev.emps];
+          return copyCode;
+        });
+
+        handleClose();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    } finally {
+      setLoader(false);
     }
-    else {
-       toast.error(data.message)
-
-    }
-   
-   
-  } catch (error) {
-    console.error(error);
-    toast.error(error.message)
-
-  } 
-  finally {
-    setLoader(false); 
-  }
   };
 
   return (
@@ -78,7 +78,6 @@ for (let [key, value] of formData.entries()) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
-            
             <div className="mb-2">
               <label>Name</label>
               <input
@@ -174,7 +173,6 @@ for (let [key, value] of formData.entries()) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-           
         </Modal.Footer>
       </Modal>
     </>
