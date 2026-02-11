@@ -39,7 +39,7 @@ This project demonstrates how to build a complete CRUD-based system with image u
 
 ---
 
-## 📂 Project Structure
+
 ## 🖼️ Application Screenshots
 
 ### Employee List Page
