@@ -29,7 +29,7 @@ export const EmpAll = () => {
       setLoading(true);
 
       const res = await fetch(
-        `${API_URL}/get-emp?limit=${limit}&page=${pageNo}&search=${searchText}`,
+        `${API_URL}/v1/get-emp?limit=${limit}&page=${pageNo}&search=${searchText}`,
       );
 
       const data = await res.json();

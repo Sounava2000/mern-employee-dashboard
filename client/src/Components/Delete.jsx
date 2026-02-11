@@ -17,7 +17,7 @@ export const Delete = ({ emp, setEmpData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`${API_URL}/del-emp/${emp._id}`, {
+        const res = await fetch(`${API_URL}/v1/del-emp/${emp._id}`, {
           method: "POST",
         });
         const data = await res.json();

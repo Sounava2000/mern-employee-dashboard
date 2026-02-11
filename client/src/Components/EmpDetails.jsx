@@ -15,7 +15,7 @@ export const EmpDetails = () => {
   useEffect(() => {
     async function fetchEmp() {
       try {  
-        const res = await fetch(`${API_URL}/get-empId/${id}`);
+        const res = await fetch(`${API_URL}/v1/get-empId/${id}`);
         const data = await res.json();
 
         if (data.success) {

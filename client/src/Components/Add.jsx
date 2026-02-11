@@ -41,7 +41,7 @@ export const Add = ({ setEmpData }) => {
     }
     console.log(formData.entries());
     try {
-      const res = await fetch(`${API_URL}/create`, {
+      const res = await fetch(`${API_URL}/v1/create`, {
         method: "POST",
         body: formData,
       });

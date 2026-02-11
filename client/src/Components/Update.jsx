@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 export const Update = ({ emp, setEmpData }) => {
   const [show, setShow] = useState(false);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleClose = () => {
     setShow(false);
     setImage(null);
@@ -45,7 +47,7 @@ export const Update = ({ emp, setEmpData }) => {
     if (image) {
       formData.append("file", image);
     }
-    const res = await fetch(`http://localhost:4000/v1/update-emp/${emp._id}`, {
+    const res = await fetch(`${API_URL}/v1/update-emp/${emp._id}`, {
       method: "POST",
       body: formData,
     });
