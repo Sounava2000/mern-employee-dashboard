@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export const EmpAll = () => {
   const API_URL = import.meta.env.VITE_BACKEND_URL;
   let navigate = useNavigate();
+  console.log(API_URL)
+
   const [empData, setEmpData] = useState({
     emps: [],
     pagination: {
