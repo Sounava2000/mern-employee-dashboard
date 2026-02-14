@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const EmpAll = () => {
   const API_URL = import.meta.env.VITE_BACKEND_URL;
   let navigate = useNavigate();
-  console.log(API_URL)
+  console.log(API_URL);
 
   const [empData, setEmpData] = useState({
     emps: [],
@@ -31,13 +31,12 @@ export const EmpAll = () => {
       setLoading(true);
 
       const res = await fetch(
-        `${API_URL}/v1/get-emp?limit=${limit}&page=${pageNo}&search=${searchText}`,
+        `${API_URL.replace(/\/$/, "")}/v1/get-emp?limit=${limit}&page=${pageNo}&search=${searchText}`,
       );
 
       const data = await res.json();
 
       if (data.success) {
-        
         setEmpData({
           emps: data.emps,
           pagination: data.pagination,
